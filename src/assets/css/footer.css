@@ -1,0 +1,14 @@
+main>.container {
+    padding: 60px 15px 0;
+}
+
+.footer {
+    background-color: #cccccc;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+code {
+    font-size: 80%;
+}
