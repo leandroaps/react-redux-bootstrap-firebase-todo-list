@@ -10,6 +10,10 @@ class List extends Component {
         formValue: ''
     };
 
+    componentWillMount() {
+        this.props.fetchToDos();
+    }
+
     inputChange = event => {
         this.setState({ formValue: event.target.value });
     };
@@ -26,18 +30,17 @@ class List extends Component {
         const { showForm, formValue } = this.state;
         if (showForm) {
             return (
-                <main role="main" className="flex-shrink-0">
-                    <form onSubmit={this.formSubmit}>
-                        <div className="input-group flex-nowrap">
-                            <div className="input-group-prepend">
-                                <span
-                                    className="input-group-text"
-                                    id="addon-wrapping"
-                                >
-                                    #
-                                </span>
-                            </div>
-
+                <form onSubmit={this.formSubmit}>
+                    <div className="input-group flex-nowrap">
+                        <div className="input-group-prepend">
+                            <span
+                                className="input-group-text"
+                                id="addon-wrapping"
+                            >
+                                #
+                            </span>
+                        </div>
+                        <label htmlFor="toDoNext">
                             <input
                                 value={formValue}
                                 onChange={this.inputChange}
@@ -48,13 +51,12 @@ class List extends Component {
                                 aria-label="Task"
                                 aria-describedby="addon-wrapping"
                             />
-                            <label htmlFor="toDoNext">What Next?</label>
-                            <button type="button" className="btn btn-primary">
-                                Add
-                            </button>
-                        </div>
-                    </form>
-                </main>
+                        </label>
+                        <button type="button" className="btn btn-primary">
+                            Add
+                        </button>
+                    </div>
+                </form>
             );
         }
     };
@@ -68,50 +70,40 @@ class List extends Component {
             return toDos;
         }
         return (
-            <div className="col s10 offset-s1 center-align">
+            <main role="main" className="flex-shrink-0">
                 <h4>You have no more things ToDo!</h4>
-            </div>
+            </main>
         );
-    }
-
-    componentWillMount() {
-        this.props.fetchToDos();
     }
 
     render() {
         const { showForm } = this.state;
         return (
             <main role="main" className="flex-shrink-0">
+                <div className="py-5 text-center">
+                    <h1 className="display-4">Fluid To-Do</h1>
+                    <p className="lead">
+                        This is a modified jumbotron that occupies the entire
+                        horizontal space of its parent.
+                    </p>
+                </div>
+                <div className="py-5 text-center">
+                    <button
+                        type="button"
+                        onClick={() => this.setState({ showForm: !showForm })}
+                        className="btn btn-primary btn-lg"
+                    >
+                        {showForm ? (
+                            <span>Hide form</span>
+                        ) : (
+                            <span>Show form</span>
+                        )}
+                    </button>
+                    {this.renderForm()}
+                </div>
+
                 <div className="container">
-                    <div className="fixed-action-btn">
-                        <button
-                            type="button"
-                            onClick={() =>
-                                this.setState({ showForm: !showForm })
-                            }
-                            className="btn-floating btn-large black darken-4"
-                        >
-                            {showForm ? (
-                                <button
-                                    type="button"
-                                    className="large material-icons"
-                                >
-                                    -
-                                </button>
-                            ) : (
-                                <button
-                                    type="button"
-                                    className="large material-icons"
-                                >
-                                    +
-                                </button>
-                            )}
-                        </button>
-                    </div>
-                    <div className="container">
-                        {this.renderForm()}
-                        {this.renderToDo()}
-                    </div>
+                    <div className="container">{this.renderToDo()}</div>
                 </div>
             </main>
         );

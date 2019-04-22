@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="footer mt-auto py-3">
+        <footer className="footer mt-2 py-3">
             <div className="container">
                 <span className="text-muted">
                     Place sticky footer content here.

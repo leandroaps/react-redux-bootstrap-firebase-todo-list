@@ -11,7 +11,7 @@ class ListItem extends Component {
     render() {
         const { todoId, todo } = this.props;
         return (
-            <div className="card" style={{ width: '18rem', float: 'left' }}>
+            <div className="card m-1" style={{ width: '18rem', float: 'left' }}>
                 <div className="card-header">
                     <h5 className="card-title">{todo.title}</h5>
                 </div>

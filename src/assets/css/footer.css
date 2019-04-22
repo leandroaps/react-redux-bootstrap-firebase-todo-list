@@ -1,14 +1,13 @@
-main>.container {
-    padding: 60px 15px 0;
+main>.container-fluid {
+    padding: 0 15px 0;
+}
+
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
 }
 
 .footer {
     background-color: #cccccc;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-code {
-    font-size: 80%;
 }
